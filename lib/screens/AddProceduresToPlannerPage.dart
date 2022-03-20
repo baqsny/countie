@@ -19,7 +19,6 @@ class AddProceduresToPlannerPage extends StatefulWidget {
 
 class _AddProceduresToPlannerPageState
     extends State<AddProceduresToPlannerPage> {
-  //AddProcedureToPlannerModel? _procedureToPlanner;
   List<Procedure>? _procedures;
   bool? _loading;
   String query = '';
@@ -30,11 +29,13 @@ class _AddProceduresToPlannerPageState
   void initState() {
     _loading = true;
     super.initState();
-    ApiManager.getProcedures(query).then((procedures) {
-      _procedures = procedures;
-      _loading = false;
-      setState(() {});
-    });
+    ApiManager.getProcedures(query).then(
+      (procedures) {
+        _procedures = procedures;
+        _loading = false;
+        setState(() {});
+      },
+    );
   }
 
   @override
@@ -56,19 +57,18 @@ class _AddProceduresToPlannerPageState
 
   @override
   Widget build(BuildContext context) {
-    String selectedDate = formatter.format(widget.testDate);
+    String selectedDate = DateFormat.yMMMMd('pl-PL').format(widget.testDate);
     return Scaffold(
       appBar: AppBar(
-        title: Text(_loading!
-            ? 'Ładowanie procedur...'
-            : 'Lista procedur: $selectedDate'),
+        title: Text(_loading! ? 'Ładowanie procedur...' : 'Lista procedur'),
+        // $selectedDate'),
       ),
       body: Column(
         children: <Widget>[
           buildSearchBar(),
           Expanded(
             child: ListView.builder(
-              itemCount: null == _procedures ? 0 : _procedures!.length,
+              itemCount: _procedures != null ? _procedures!.length : 0,
               itemBuilder: (context, index) {
                 return _listItem(index);
               },
@@ -102,7 +102,7 @@ class _AddProceduresToPlannerPageState
 
     return Card(
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+        contentPadding: EdgeInsets.zero,
         horizontalTitleGap: 5,
         leading: IconButton(
           onPressed: () {},
@@ -127,10 +127,6 @@ class _AddProceduresToPlannerPageState
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(
-              procedure.price!.toStringAsFixed(2) + ' zł',
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
             IconButton(
               onPressed: () async {
                 final procedureToAdd = AddProcedureToPlanner(

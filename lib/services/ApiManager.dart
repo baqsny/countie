@@ -67,10 +67,10 @@ class ApiManager {
     return planner;
   }
 
-  Future<Summary> getSummary(String date, String period) async {
+  Future<Summary> getSummary(String date) async {
     try {
       final response =
-          await http.get(Uri.parse(Strings.summary_url + '${period}/' + date));
+          await http.get(Uri.parse(Strings.summary_url + 'month/' + date));
       if (response.statusCode == 200) {
         var jsonString = response.body;
         var jsonMap = json.decode(jsonString);

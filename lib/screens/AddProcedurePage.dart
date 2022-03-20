@@ -49,7 +49,7 @@ class _AddProcedureFormState extends State<AddProcedurePage> {
         body: Form(
           key: formKey,
           child: ListView(
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            //keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: EdgeInsets.all(16),
             children: <Widget>[
               buildProcedureName(),
