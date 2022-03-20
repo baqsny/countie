@@ -18,6 +18,10 @@ class SearchWidget extends StatefulWidget {
 
 class _SearchWidgetState extends State<SearchWidget> {
   final controller = TextEditingController();
+  FocusNode inputNode = FocusNode();
+  void openKeyboard() {
+    FocusScope.of(context).requestFocus(inputNode);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +39,8 @@ class _SearchWidgetState extends State<SearchWidget> {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(
+        autofocus: true,
+        focusNode: inputNode,
         controller: controller,
         decoration: InputDecoration(
           icon: Icon(Icons.search, color: style.color),

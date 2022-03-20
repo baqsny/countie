@@ -19,8 +19,6 @@ class _HomePageState extends State<HomePage> {
 
   final pages = [
     PlannerPage(),
-    SummaryPage(),
-    MorePage(),
     MorePage(),
   ];
   Widget build(BuildContext context) {
@@ -33,25 +31,20 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBottomNavigationBar() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                spreadRadius: 5,
-                blurRadius: 10)
-          ]),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
       child: BottomNavigationBar(
         landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
         type: BottomNavigationBarType.fixed,
         onTap: (index) => setState(() => _selectedIndex = index),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[100],
         showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        unselectedItemColor: Colors.grey.withOpacity(0.4),
         items: [
           BottomNavigationBarItem(
               label: 'Główna',
@@ -64,32 +57,10 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
               )),
           BottomNavigationBarItem(
-            label: 'Podsumowanie',
-            icon: Icon(
-              Icons.pie_chart_outline,
-              size: 30,
-            ),
-            activeIcon: Icon(
-              Icons.pie_chart,
-              size: 30,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Baza',
-            icon: Icon(
-              MdiIcons.databaseOutline,
-              size: 30,
-            ),
-            activeIcon: Icon(
-              MdiIcons.database,
-              size: 30,
-            ),
-          ),
-          BottomNavigationBarItem(
             label: 'Więcej',
             icon: Icon(
               Icons.menu,
-              size: 40,
+              size: 30,
             ),
           ),
         ],
