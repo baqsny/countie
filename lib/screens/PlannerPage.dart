@@ -13,7 +13,6 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:calendar_strip/calendar_strip.dart';
 
 class PlannerPage extends StatefulWidget {
   const PlannerPage({Key? key}) : super(key: key);
