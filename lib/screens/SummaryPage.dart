@@ -3,7 +3,7 @@ import 'package:countie/models/Summary.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../services/ApiManager.dart';
 
 class SummaryPage extends StatefulWidget {
@@ -92,12 +92,41 @@ class _DailySummaryState extends State<DailySummary> {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                  '${DateFormat.yMMMMd('pl-PL').format(widget.date)}',
-                                  style: GoogleFonts.lato(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500)),
+                            children: <Widget>[
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.arrow_back_ios),
+                                color: Colors.blue,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.65,
+                                alignment: Alignment.center,
+                                constraints: BoxConstraints(),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[100],
+                                  shape: BoxShape.rectangle,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(14.0)),
+                                ),
+                                child: InkWell(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 5),
+                                    child: Text(
+                                      '${DateFormat.yMMMMd('pl-PL').format(widget.date)}',
+                                      style: GoogleFonts.lato(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.blue),
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.arrow_forward_ios),
+                                color: Colors.blue,
+                              ),
                             ],
                           ),
                           Row(
