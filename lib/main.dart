@@ -1,5 +1,7 @@
 import 'package:countie/screens/HomePage.dart';
-import 'package:countie/screens/LoginScreen.dart';
+import 'package:countie/screens/sign_in_screen.dart';
+import 'package:countie/screens/sign_up_screen.dart';
+import 'package:countie/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/AddProcedurePage.dart';
 import 'screens/PlannerPage.dart';
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         Locale('pl', ''),
       ],
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }

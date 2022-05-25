@@ -24,6 +24,14 @@ class _SearchWidgetState extends State<SearchWidget> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 800)).then((_) {
+      FocusScope.of(context).requestFocus(inputNode);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final styleActive = TextStyle(color: Colors.black);
     final styleHint = TextStyle(color: Colors.black54);
@@ -39,7 +47,6 @@ class _SearchWidgetState extends State<SearchWidget> {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(
-        autofocus: true,
         focusNode: inputNode,
         controller: controller,
         decoration: InputDecoration(

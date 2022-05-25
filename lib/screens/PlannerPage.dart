@@ -45,7 +45,9 @@ class _PlannerPageState extends State<PlannerPage> {
   Future loadData() async {
     Future.delayed(Duration(milliseconds: 800));
     _focusedDay = _selectedDay!;
-    _planner = ApiManager().getPlanners(formatter.format(_focusedDay));
+    _planner = ApiManager().getPlanners(
+      formatter.format(_focusedDay),
+    );
     isLoading = false;
     counter = getListLength(0);
   }
@@ -201,13 +203,13 @@ class _PlannerPageState extends State<PlannerPage> {
                           : Container(
                               padding: EdgeInsets.zero,
                               color: Colors.white,
-                              constraints: BoxConstraints.expand(),
+                              constraints: const BoxConstraints.expand(),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Icon(MdiIcons.playlistRemove,
-                                      size: 250, color: Colors.grey[300]),
+                                      size: 230, color: Colors.grey[300]),
                                   Text('Coś pusto tutaj,',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(

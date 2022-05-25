@@ -1,4 +1,5 @@
-import 'package:countie/screens/MorePage.dart';
+import 'package:countie/screens/sign_in_screen.dart';
+import 'package:countie/services/secure_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +15,7 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
+  SecureStorage secureStorage = SecureStorage();
   final DateFormat formatter = DateFormat('yyyy-MM-dd');
 
   @override
@@ -58,7 +60,14 @@ class _MorePageState extends State<MorePage> {
                 title: 'O Autorze',
                 onClicked: () {}),
             buildMenuItem(
-                icon: Icons.logout_rounded, title: 'Wyloguj', onClicked: () {}),
+                icon: Icons.logout_rounded,
+                title: 'Wyloguj',
+                onClicked: () {
+                  secureStorage.deleteSecureData("token").whenComplete(() {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  });
+                }),
             buildMenuItem(
                 icon: Icons.exit_to_app,
                 title: 'Wyjdź z aplikacji',
